@@ -185,7 +185,7 @@ module.exports = (voiceName, text) => {
 							path: voice.arg,
 							method: "POST",
 							headers: { 			
-								Host: "tts.town",					
+								Host: "readloud.net",					
 								"Content-Type": "application/x-www-form-urlencoded"
 							}
 						},
@@ -203,7 +203,7 @@ module.exports = (voiceName, text) => {
 										hostname: "101.99.94.14",	
 										path: `/${path}`,
 										headers: {
-											Host: "tts.town"
+											Host: "readloud.net"
 										}
 									}, (r) => {
                                                                                 let buffers = [];
