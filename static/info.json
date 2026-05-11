@@ -35,9 +35,9 @@
 		},
 		"/static/animation/importer.swf": {
 			"headers": {
-				"Content-Type": "application/json"
+				"Content-Type": "http://localhost/static/animation/importer.swf"
 			},
-			"content": "95"
+			"content": ""
 		},
 		"/cc.swf": {},
 		"/go_full.swf": {},

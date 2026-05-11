@@ -46,6 +46,13 @@ async function listAssets(data, makeZip) {
 				.join("")}</ugc>`;
 			break;
 		}
+		case "effect": {
+			files = asset.list(data.movieId, "effect");
+			xmlString = `${header}<ugc more="0">${files
+				.map((v) =>`<effect subtype="0" id="${v.id}" name="${v.name}" enable="Y"/>`)
+				.join("")}</ugc>`;
+			break;
+		}
 		case "prop": {
 			files = asset.list(mId, "prop");
 			xmlString = `${header}<ugc more="0">${files
@@ -81,10 +88,18 @@ async function listAssets(data, makeZip) {
 
 		files.forEach((file) => {
 			switch (file.mode) {
-				case "bg":
-				case "movie": 
+				case "bg": {
+					const buffer = asset.load(data.movieId, file.id);
+					fUtil.addToZip(zip, `${file.mode}/${file.id}`, buffer);
+					break;
+				}
+				case "movie": {
+					const buffer = asset.load(data.movieId, file.id);
+					fUtil.addToZip(zip, `${file.mode}/${file.id}`, buffer);
+					break;
+				}
 				case "sound": {
-					const buffer = asset.load(mId, file.id);
+					const buffer = asset.load(data.movieId, file.id);
 					fUtil.addToZip(zip, `${file.mode}/${file.id}`, buffer);
 					break;
 				}
