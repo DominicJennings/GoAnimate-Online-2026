@@ -47,7 +47,7 @@ module.exports = function (req, res, url) {
 
 		case "POST": {
 			switch (url.pathname) {
-				case "/goapi/getMovie/": {
+				case "/fbapi/getMovie/": {
 					res.setHeader("Content-Type", "application/zip");
 
 					movie.loadZip(url.query.movieId).then((b) => res.end(Buffer.concat([base, b]))).catch(() => res.end("1"));
