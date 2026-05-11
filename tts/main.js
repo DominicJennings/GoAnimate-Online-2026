@@ -179,55 +179,42 @@ module.exports = (voiceName, text) => {
 					console.log("acapela voice has been used by user")
 				}
 				case "readloud": {
-					const req = https.request(
-						{
-							hostname: "101.99.94.14",														
-							path: voice.arg,
-							method: "POST",
-							headers: { 			
-								Host: "readloud.net",					
-								"Content-Type": "application/x-www-form-urlencoded"
-							}
-						},
-						(r) => {
-							let buffers = [];
-							r.on("data", (b) => buffers.push(b));
-							r.on("end", () => {
-								const html = Buffer.concat(buffers);
-								const beg = html.indexOf("/tmp/");
-								const end = html.indexOf("mp3", beg) + 3;
-								const path = html.subarray(beg, end).toString();
-
-								if (path.length > 0) {
-									https.get({
-										hostname: "101.99.94.14",	
-										path: `/${path}`,
-										headers: {
-											Host: "readloud.net"
-										}
-									}, (r) => {
-                                                                                let buffers = [];
-                                                                                r.on("data", (d) => buffers.push(d));
-                                                                                r.on("end", () => res(Buffer.concat(buffers)));
-                                                                        }).on("error", rej);
-								} else {
-									return rej("Could not find voice clip file in response.");
-								}
-							});
-						}
-					);
-					req.on("error", rej);
-					req.end(
-						new URLSearchParams({
+						const body = new URLSearchParams({
 							but1: text,
 							butS: 0,
 							butP: 0,
 							butPauses: 0,
-							but: "Submit",
-						}).toString()
-					);
-					break;
-			}
+							butt0: "Submit",
+						}).toString();
+						const req = https.request(
+							{
+								hostname: "readloud.net",
+								path: voice.arg,
+								method: "POST",
+								headers: {
+									"Content-Type": "application/x-www-form-urlencoded"
+								}
+							},
+							(r) => {
+								let buffers = [];
+								r.on("error", (e) => rej(e));
+								r.on("data", (b) => buffers.push(b));
+								r.on("end", () => {
+									const html = Buffer.concat(buffers);
+									const beg = html.indexOf("/tmp/");
+									const end = html.indexOf("mp3", beg) + 3;
+									const sub = html.subarray(beg, end).toString();
+
+									https.get(`https://readloud.net${sub}`, (r2) => {
+										r2.on("error", (e) => rej(e));
+										resolve(r2);
+									});
+								});
+							}
+					req.on("error", rej);
+					req.end(body);
+						break;
+					}
         
         case "svox": {
 				var q = qs.encode({
