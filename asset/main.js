@@ -112,9 +112,6 @@ module.exports = {
 					theme = "family";
 					break;
 				case "action":
-				case "animal":
-				case "space":
-				case "vietnam":
 					theme = "cc2";
 					break;
 			}
