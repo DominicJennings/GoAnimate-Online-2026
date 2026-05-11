@@ -11,9 +11,9 @@
 	<theme id="business" name="Business Friendly" thumb="" col="2"/>
 	<theme id="whiteboard" name="Whiteboard Animation" thumb="" col="2"/>
 	<theme id="infographics" name="Video Infographics" thumb="" col="2"/>
-        <theme id="commoncraft" name="Common Craft" thumb="" col="2"/>
-        <theme id="sticklybiz" name="Stickly Business" thumb="" col="2"/>
-        <theme id="bizmodels" name="Business Models" thumb="" col="2"/>
+    <theme id="commoncraft" name="Common Craft" thumb="" col="2"/>
+    <theme id="sticklybiz" name="Stickly Business" thumb="" col="2"/>
+    <theme id="bizmodels" name="Business Models" thumb="" col="2"/>
 	<theme id="action" name="Lil' Peepz" thumb="" col="3"/>
 	<theme id="chibi" name="Chibi Peepz" thumb="" col="3"/>
 	<theme id="space" name="Space Peepz" thumb="" col="3"/>
@@ -26,9 +26,9 @@
 	<theme id="christmas" name="Holiday &amp; Seasonal" thumb="santa-stand.swf" col="5"/>
 	<theme id="monstermsh" name="Monsters Mayhem" thumb="" col="5"/>
 	<theme id="startrek" name="Star Trek Quogs" enable="N" col="5"/>
-        <word></word>
-        <whiteword/>
-        <excludeAssetIDs/>
-        <points money="100" sharing="100"/>
-        <tts credit="100"/>
-        </list>
+    <word></word>
+    <whiteword/>
+    <excludeAssetIDs/>
+    <points money="100" sharing="100"/>
+    <tts credit="100"/>
+    </list>
